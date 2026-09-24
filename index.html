@@ -171,7 +171,7 @@ document.getElementById("chatForm").addEventListener("submit",async e=>{
 conversationHistory.push({role:"assistant",content:reply});
     localStorage.setItem("conversationHistory", JSON.stringify(conversationHistory));
     if(!res.ok)throw new Error("HTTP "+res.status);
-   hideTyping();addMessage(reply||"I received your message, but no reply was returned.","ai");
+   hideTyping();addMessage(marked.parse(reply||"I received your message, but no reply was returned."),"ai");
   }catch(err){
     hideTyping();addMessage("I couldn't reach the automation. Make sure your Make scenario is turned on.","bot");
   }finally{send.disabled=false;input.focus()}
