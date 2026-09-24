@@ -113,6 +113,7 @@ input{
 
 <script>
 const WEBHOOK_URL = "https://shy-frost-9af6.hebronpeter376.workers.dev/";
+  let conversationHistory = [];
 const messages=document.getElementById("messages");
 const input=document.getElementById("message");
 const send=document.getElementById("send");
@@ -148,7 +149,12 @@ document.getElementById("chatForm").addEventListener("submit",async e=>{
   try{
     const res=await fetch(WEBHOOK_URL,{
       method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({message:text})
+      body:JSON.stringify({
+  message: conversationHistory
+    .map(m => `${m.role === "user" ? "User" : "Assistant"}: ${m.content}`)
+    .join("\n")
+    + `\nUser: ${text}`
+})
     });
     const reply=await res.text();
     if(!res.ok)throw new Error("HTTP "+res.status);
