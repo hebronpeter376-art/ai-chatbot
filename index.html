@@ -159,6 +159,7 @@ document.getElementById("chatForm").addEventListener("submit",async e=>{
     const reply=await res.text();
     conversationHistory.push({role:"user",content:text});
 conversationHistory.push({role:"assistant",content:reply});
+    localStorage.setItem("conversationHistory", JSON.stringify(conversationHistory));
     if(!res.ok)throw new Error("HTTP "+res.status);
    hideTyping();addMessage(reply||"I received your message, but no reply was returned.","ai");
   }catch(err){
