@@ -136,7 +136,7 @@ function addMessage(text, type){
   row.className="row "+type;
   const msg=document.createElement("div");
   msg.className="msg "+type;
-  msg.textContent=text;
+  msg.innerHTML=text;
   const stamp=document.createElement("div");
   stamp.className="time";
   stamp.textContent=time();
