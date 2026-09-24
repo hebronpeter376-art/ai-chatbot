@@ -150,7 +150,7 @@ document.getElementById("chatForm").addEventListener("submit",async e=>{
     const res=await fetch(WEBHOOK_URL,{
       method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({
-  message: conversationHistory
+  message: conversationHistory.slice(-20)
     .map(m => `${m.role === "user" ? "User" : "Assistant"}: ${m.content}`)
     .join("\n")
     + `\nUser: ${text}`
