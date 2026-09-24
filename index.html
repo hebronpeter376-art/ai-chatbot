@@ -168,9 +168,21 @@ conversationHistory.push({role:"assistant",content:reply});
   }finally{send.disabled=false;input.focus()}
 });
 
-document.getElementById("theme").addEventListener("click",()=>{
+const themeButton = document.getElementById("theme");
+
+if(localStorage.getItem("theme") === "dark"){
+  document.body.classList.add("dark");
+  themeButton.textContent = "☀️";
+}
+
+themeButton.addEventListener("click",()=>{
   document.body.classList.toggle("dark");
-  document.getElementById("theme").textContent=document.body.classList.contains("dark")?"☀️":"🌙";
+
+  const isDark = document.body.classList.contains("dark");
+
+  themeButton.textContent = isDark ? "☀️" : "🌙";
+
+  localStorage.setItem("theme", isDark ? "dark" : "light");
 });
 document.getElementById("clear").addEventListener("click",()=>{
   document.getElementById("newChat").addEventListener("click",()=>{
