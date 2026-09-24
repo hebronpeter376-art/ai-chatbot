@@ -173,6 +173,11 @@ document.getElementById("theme").addEventListener("click",()=>{
   document.getElementById("theme").textContent=document.body.classList.contains("dark")?"☀️":"🌙";
 });
 document.getElementById("clear").addEventListener("click",()=>{
+  document.getElementById("newChat").addEventListener("click",()=>{
+  conversationHistory = [];
+  localStorage.removeItem("conversationHistory");
+  messages.innerHTML='<div class="row"><div class="msg bot">New chat started. How can I help?</div></div>';
+});
   conversationHistory = [];
   localStorage.removeItem("conversationHistory");
   messages.innerHTML='<div class="row"><div class="msg bot">Chat cleared. How can I help?</div></div>';
