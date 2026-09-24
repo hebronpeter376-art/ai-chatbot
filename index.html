@@ -134,13 +134,26 @@ function time(){
 function addMessage(text, type){
   const row=document.createElement("div");
   row.className="row "+type;
+
   const msg=document.createElement("div");
   msg.className="msg "+type;
-  msg.innerHTML=text;
+
+  if(type==="ai"){
+    msg.innerHTML=text;
+  }else{
+    msg.textContent=text;
+  }
+
   const stamp=document.createElement("div");
   stamp.className="time";
   stamp.textContent=time();
-  if(type==="user"){row.append(stamp,msg)}else{row.append(msg,stamp)}
+
+  if(type==="user"){
+    row.append(stamp,msg);
+  }else{
+    row.append(msg,stamp);
+  }
+
   messages.appendChild(row);
   messages.scrollTop=messages.scrollHeight;
 }
