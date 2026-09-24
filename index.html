@@ -113,7 +113,7 @@ input{
 
 <script>
 const WEBHOOK_URL = "https://shy-frost-9af6.hebronpeter376.workers.dev/";
-  let conversationHistory = [];
+ let conversationHistory = JSON.parse(localStorage.getItem("conversationHistory") || "[]");
 const messages=document.getElementById("messages");
 const input=document.getElementById("message");
 const send=document.getElementById("send");
