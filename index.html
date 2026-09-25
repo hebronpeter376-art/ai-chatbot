@@ -222,8 +222,15 @@ conversationHistory.push({role:"assistant",content:reply});
     localStorage.setItem("conversationHistory", JSON.stringify(conversationHistory));
     if(!res.ok)throw new Error("HTTP "+res.status);
    hideTyping();addMessage(marked.parse(reply||"I received your message, but no reply was returned."),"ai");
-  }catch(err){
-    hideTyping();addMessage("I couldn't reach the automation. Make sure your Make scenario is turned on.","bot");
+}catch(err){
+  hideTyping();
+
+  if(err.name==="TypeError"){
+    addMessage("I couldn't connect to the AI service. Please check your internet connection and try again.","bot");
+  }else{
+    addMessage("Something went wrong while processing your message. Please try again.","bot");
+  }
+}
   }finally{
   send.disabled=false;
   input.disabled=false;
