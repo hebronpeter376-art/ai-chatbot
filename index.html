@@ -73,9 +73,18 @@ body{
   display:flex;align-items:center;gap:9px;padding:7px 7px 7px 14px;
   border:1px solid var(--border);border-radius:17px;background:var(--input);
 }
-input{
-  flex:1;border:0;outline:0;background:transparent;color:var(--text);
-  font-size:14px;min-width:0;padding:8px 0;
+input,
+textarea{
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--text);
+  font-size:14px;
+  min-width:0;
+  padding:8px 0;
+  font-family:inherit;
+  resize:none;
 }
 .send{
   width:42px;height:42px;border:0;border-radius:13px;background:var(--user);
@@ -131,7 +140,7 @@ input{
 
   <div class="composer">
     <form class="form" id="chatForm">
-      <input id="message" placeholder="Message your AI assistant..." autocomplete="off" required>
+     <textarea id="message" placeholder="Message your AI assistant..." autocomplete="off" required></textarea>
       <button class="send" id="send" type="submit" title="Send">➤</button>
     </form>
     <div class="hint">Press Enter to send</div>
