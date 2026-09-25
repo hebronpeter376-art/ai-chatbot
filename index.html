@@ -233,6 +233,10 @@ input.addEventListener("keydown", e=>{
     document.getElementById("chatForm").requestSubmit();
   }
 });
+  input.addEventListener("input", ()=>{
+  input.style.height="auto";
+  input.style.height=input.scrollHeight+"px";
+});
 const themeButton = document.getElementById("theme");
 
 if(localStorage.getItem("theme") === "dark"){
