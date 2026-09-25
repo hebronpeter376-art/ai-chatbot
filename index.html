@@ -200,7 +200,10 @@ function hideTyping(){document.getElementById("typingRow")?.remove()}
 document.getElementById("chatForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const text=input.value.trim();if(!text)return;
-  addMessage(text,"user");input.value="";send.disabled=true;
+  addMessage(text,"user");
+input.value="";
+input.style.height="auto";
+send.disabled=true;
 input.disabled=true;
 showTyping();
   try{
